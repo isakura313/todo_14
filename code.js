@@ -41,13 +41,37 @@ function addDeal(){
     let item = new ItemDeal(content, select.value-1);
     let item_to_JSON = JSON.stringify(item);
     localStorage.setItem(+item.now, item_to_JSON);
-    // GenerateDOM(item);
+    GenerateDOM(item);
     field.value = '';
 }
 
 button.addEventListener("click", addDeal);
+document.addEventListener("keypress", (e)=>{
+    if(e.keyCode == 13){
+        addDeal();
+    }
+})
 
 
+function GenerateDOM(obj){
+    deals.insertAdjacentHTML("afterbegin",
+    `<div class="wrap_task animated zoomInLeft" id="${+obj.now}">
+        <div class="task is-size-4">
+            <p> <span class="${IA[obj.color]}"> ${obj.content}</span>
+            ${obj.now.getDate()} ${Month_Array[obj.now.getMonth()]}
+            </p>
+        </div>
+        <span class="icon is-large tr">
+            <i class="fa fa-trash thrash"></i>
+        </span>
+        </div>
+    `)
+}
+
+
+function GR(arr){
+    return Math.round(Math.random() * (arr.length-1));
+}
 
 
 
