@@ -1,0 +1,27 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "code.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test1": "echo \"Hello\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isakura313/todo_14.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/isakura313/todo_14/issues"
+  },
+  "homepage": "https://github.com/isakura313/todo_14#readme",
+  "devDependencies": {
+    "animate.css": "^3.7.2",
+    "bulma": "^0.8.0",
+    "font-awesome": "^4.7.0",
+    "webpack": "^4.41.2"
+  }
+}
