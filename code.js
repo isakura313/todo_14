@@ -82,4 +82,20 @@ function GR(arr){
 // из localStorage
 
 
+// Домашнее задание
+
+let Background_Color_Class = [
+    "has-background-link",
+    "has-background-primary",
+    "has-background-info",
+    "has-background-warning",
+    "has-background-grey"
+];
+
+function randomBackColor(){
+    let rand = GR(Background_Color_Class);
+    document.querySelector(".hero").classList.add(Background_Color_Class[rand]);
+}
+
+window.addEventListener("load", randomBackColor);
 
