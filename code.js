@@ -13,6 +13,15 @@ let motivation_array = [
     'Д/з само себя не сделает))'
 ];
 
+let background_array = [
+    'has-background-primary',
+    'has-background-info',
+    'has-background-link',
+    'has-background-success',
+    'has-background-warning',
+    'has-background-danger'
+];
+
 let IA = [
     'has-text-danger',
     'has-text-warning',
@@ -31,6 +40,8 @@ let select = document.querySelector("select");
 let field = document.querySelector("input");
 let button = document.querySelector(".button_plus");
 let deals = document.querySelector(".deals");
+let hero = document.querySelector(".hero");
+let random_color = Math.floor(Math.random() * 6);
 
 //функция создания нашего дела
 function addDeal(){
@@ -73,6 +84,9 @@ function GR(arr){
     return Math.round(Math.random() * (arr.length-1));
 }
 
+
+
+hero.classList.add(background_array[random_color]);
 
 
 
