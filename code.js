@@ -1,10 +1,4 @@
-class ItemDeal{
-    constructor(content, color){
-        this.content = content;
-        this.color = color;
-        this.now = new Date;
-    }
-}
+import ItemDeal from './ItemDeal'
 
 let motivation_array = [
     'люблю webpack',
@@ -43,6 +37,8 @@ let deals = document.querySelector(".deals");
 let hero = document.querySelector(".hero");
 let random_color = Math.floor(Math.random() * 6);
 
+hero.classList.add(background_array[random_color]);
+
 //функция создания нашего дела
 function addDeal(){
     let content = field.value;
@@ -63,12 +59,31 @@ document.addEventListener("keypress", (e)=>{
     }
 })
 
+function drawOnLoad(){
+    for (let i = 0; i < localStorage.length; i++) {
+        let lk_key = localStorage.key(i); // получить по номеру в объекте
+        let content = localStorage.getItem(lk_key);
+        let item = JSON.parse(content); 
+        let tempo_dat = Date.parse(item.now);
+        item.now = new Date(tempo_dat);
+        GenerateDOM(item);
+    }
+};
+drawOnLoad();
+
+
+//д/з
+// сделать классный дизайн, что бы срочное дело имело яркий красный цвет
+// несрочное - зеленый или другой ( какой найдете в бульма)
+// самое несрочное - любой нейтральный
+// немного поиграть с дизайном
+// все сдать пулл реквестом
 
 function GenerateDOM(obj){
     deals.insertAdjacentHTML("afterbegin",
-    `<div class="wrap_task animated zoomInLeft" id="${+obj.now}">
+    `<div class="wrap_task animated has-background-white bounce" id="${+obj.now}">
         <div class="task is-size-4">
-            <p> <span class="${IA[obj.color]}"> ${obj.content}</span>
+            <p> <span class="${IA[obj.color]}"> ${obj.name}</span>
             ${obj.now.getDate()} ${Month_Array[obj.now.getMonth()]}
             </p>
         </div>
@@ -80,20 +95,50 @@ function GenerateDOM(obj){
 }
 
 
+deals.addEventListener("click", (e) =>{
+    // let trash = e.target.closest("i");
+    let wrap_task = e.target.closest(".wrap_task");
+    wrap_task.classList.remove("zoomInLeft");
+    wrap_task.classList.add(Animation_Array[GR(Animation_Array)]);
+    setTimeout(() => {
+        wrap_task.remove();
+        localStorage.removeItem(wrap_task.id);
+    }, 1500);
+    
+});
+
+
+function ChangeColorSelect(el){
+    switch(el.value){
+        case '1':
+            el.className =" has-background-danger has-text-white";
+            break;
+        case '2':
+            el.className =" has-background-info has-text-white";
+            break;
+        case '3':
+            el.className =" has-background-primary has-text-white";
+            break;
+        default:
+            break;
+    }
+}
+
+window.onload = () => {
+    ChangeColorSelect(select);
+}
+
+select.onchange = () =>{
+    ChangeColorSelect(select);
+}
+
 function GR(arr){
     return Math.round(Math.random() * (arr.length-1));
 }
 
 
 
-hero.classList.add(background_array[random_color]);
 
-
-
-
-// самовызывающаяся функция
-// при запуске приложения она отрисовывает все наши дела 
-// из localStorage
 
 
 

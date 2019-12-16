@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="node_modules/bulma/css/bulma.min.css">
     <link rel="stylesheet" href="node_modules/animate.css/animate.css">
     <link rel="stylesheet" href="style.css">
-    <script src="code.js" defer></script>
+    <script src="dist/code.js" defer></script>
 </head>
 <body>
     <div class="hero is-fullheight is-centered has-background-link" >
@@ -17,11 +17,20 @@
             <div class="todo">
                 <h1 class="is-size-2 label has-text-white has-text-centered">ToDo Manager</h1>
                 <div class="enter_data">
-                    <select name="important" id="important" class="select is-size-5">
+
+                <div class="field">
+                <div class="control">
+                <div class="select">
+                    <select name="important" id="important" class="is-size-5">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                     </select>
+                    </div>
+                </div>
+            </div>
+
+
                     <input type="text" name="data" placeholder="добавить задание" class="input is-primary is-medium">
                     <div class="button_plus has-background-warning"> <span class="icon is-large"> 
                         <i class="fa fa-plus"></i>

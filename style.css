@@ -31,3 +31,43 @@
 .select{
     margin-right: 1em;
 }
+.deals{
+    width: 86%;
+    display: flex;
+    flex-direction: column;
+}
+
+.task{
+    display: flex;
+    align-items: center;
+    width: 80%;
+    padding: 10px;
+    border-radius: 15px;
+}
+.wrap_task{
+    display: flex;
+    align-items: center;
+    animation-name: bdSlowIn;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    margin-top: 20px;
+}
+
+.tr{
+    margin-top: 20px;
+    margin-left: 0.5em;
+    font-size: 2em;
+    color: green;
+}
+
+.tr i{
+    text-align: center;
+    margin-bottom: 50%;
+    display: flex;
+    align-items: center;
+}
+.tr:hover{
+    cursor:pointer;
+    color: tomato;
+    transform: all 0.4s;
+}

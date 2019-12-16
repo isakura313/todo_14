@@ -1,5 +1,4 @@
-
-class ItemDeal{
+export default class ItemDeal{
     constructor(name,color){
         this.name = name;
         this.color = color;
