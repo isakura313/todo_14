@@ -1,39 +1,12 @@
 import ItemDeal from "./ItemDeal" 
 import GR from "./RandomInt"
 
-let motivation_array = [
-  "люблю webpack",
-  "кто не работает, тот ест",
-  "как не быть ленивым??",
-  "Д/з само себя не сделает))"
-];
+const json = require("./fixtures.json");
 
-let background_array = [
-  "has-background-primary",
-  "has-background-info",
-  "has-background-link",
-  "has-background-success",
-  "has-background-warning",
-  "has-background-danger"
-];
+console.table(json);
 
-let IA = ["has-text-danger", "has-text-warning", "has-text-success"];
+let {motivation_array, background_array, IA, Animation_Array, Month_Array} = json;
 
-let Animation_Array = ["bounceOut", "rollOut", "rotateOut", "lightSpeedOut"];
-let Month_Array = [
-  "Января",
-  "Февраля",
-  "Марта",
-  "Апреля",
-  "Мая",
-  "Июня",
-  "Июля",
-  "Августа",
-  "Сентября",
-  "Октября",
-  "Ноября",
-  "Декабря"
-];
 
 let select = document.querySelector("select");
 
@@ -50,7 +23,18 @@ hero.classList.add(background_array[random_color]);
 //которая рисуется к main_slogan и которая тоже h3
 //main_slogan должен остаться
 let motiv_h3 = document.createElement("h3");
-motiv_h3.innerHTML = motivation_array[GR(motivation_array)];
+motiv_h3.classList.add("is-size-4", "label", "has-text-centered", "has-text-white")
+function slogan(){
+    motiv_h3.innerHTML = motivation_array[GR(motivation_array)];
+    main_slogan.insertAdjacentElement("afterend", motiv_h3);
+}
+slogan();
+setInterval(() => {
+    slogan();
+}, 3000);
+
+
+
 
 
 

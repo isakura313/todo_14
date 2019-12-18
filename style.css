@@ -22,7 +22,7 @@
     justify-content: center;
 }
 .button_plus i{
-    color: red;
+    color: green;
     font-size: 22px;
 }
 .button_plus:hover{
@@ -68,6 +68,6 @@
 }
 .tr:hover{
     cursor:pointer;
-    color: tomato;
+    color: ;
     transform: all 0.4s;
 }
