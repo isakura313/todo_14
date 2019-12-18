@@ -8,18 +8,17 @@ let motivation_array = [
 ];
 
 let background_array = [
-    'has-background-primary',
+    'has-background-dark',
     'has-background-info',
     'has-background-link',
     'has-background-success',
-    'has-background-warning',
-    'has-background-danger'
+    'has-background-white'
 ];
 
 let IA = [
-    'has-text-danger',
-    'has-text-warning',
-    'has-text-success'
+    'has-background-danger',
+    'has-background-primary',
+    'has-background-neutral'
 ];
 
 let Animation_Array = [
@@ -35,9 +34,19 @@ let field = document.querySelector("input");
 let button = document.querySelector(".button_plus");
 let deals = document.querySelector(".deals");
 let hero = document.querySelector(".hero");
-let random_color = Math.floor(Math.random() * 6);
+let random_color = GR(background_array);
 
 hero.classList.add(background_array[random_color]);
+if(random_color == 4){
+    let hero_h1 = document.querySelector('.hero h1')
+    hero_h1.classList.remove('has-text-white')
+    hero_h1.classList.add('has-text-black')
+    button.classList.remove('has-background-white')
+    button.classList.add('has-background-dark')
+    let button_i = document.querySelector(".button_plus i")
+    button_i.classList.remove('has-text-black')
+    button_i.classList.add('has-text-white')
+}
 
 //функция создания нашего дела
 function addDeal(){
@@ -81,16 +90,16 @@ drawOnLoad();
 
 function GenerateDOM(obj){
     deals.insertAdjacentHTML("afterbegin",
-    `<div class="wrap_task animated has-background-white bounce" id="${+obj.now}">
+    `<div class="wrap_task animated bounce ${IA[obj.color]}" id="${+obj.now}">
         <div class="task is-size-4">
-            <p> <span class="${IA[obj.color]}"> ${obj.name}</span>
+            <p> <span class="has-text-white"> ${obj.name}</span>
             ${obj.now.getDate()} ${Month_Array[obj.now.getMonth()]}
             </p>
         </div>
         <span class="icon is-large tr">
             <i class="fa fa-trash thrash"></i>
         </span>
-        </div>
+    </div>
     `)
 }
 
@@ -111,13 +120,13 @@ deals.addEventListener("click", (e) =>{
 function ChangeColorSelect(el){
     switch(el.value){
         case '1':
-            el.className =" has-background-danger has-text-white";
+            el.className ="has-background-danger has-text-white";
             break;
         case '2':
-            el.className =" has-background-info has-text-white";
+            el.className ="has-background-primary has-text-white";
             break;
         case '3':
-            el.className =" has-background-primary has-text-white";
+            el.className ="has-background-neutral has-text-white";
             break;
         default:
             break;
