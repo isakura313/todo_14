@@ -8,12 +8,12 @@ let motivation_array = [
 ];
 
 let background_array = [
+    'has-background-danger',
+    'has-background-warning',
+    'has-background-success',
     'has-background-primary',
     'has-background-info',
-    'has-background-link',
-    'has-background-success',
-    'has-background-warning',
-    'has-background-danger'
+    'has-background-link'
 ];
 
 let IA = [
@@ -35,7 +35,9 @@ let field = document.querySelector("input");
 let button = document.querySelector(".button_plus");
 let deals = document.querySelector(".deals");
 let hero = document.querySelector(".hero");
-let random_color = Math.floor(Math.random() * 6);
+let random_color = Math.floor(Math.random() * 3 + 3);
+
+
 
 hero.classList.add(background_array[random_color]);
 
@@ -81,9 +83,9 @@ drawOnLoad();
 
 function GenerateDOM(obj){
     deals.insertAdjacentHTML("afterbegin",
-    `<div class="wrap_task animated has-background-white bounce" id="${+obj.now}">
+    `<div class="wrap_task animated ${background_array[obj.color]} bounce" id="${+obj.now}">
         <div class="task is-size-4">
-            <p> <span class="${IA[obj.color]}"> ${obj.name}</span>
+            <p> <span class="has-text-white"> ${obj.name}</span>
             ${obj.now.getDate()} ${Month_Array[obj.now.getMonth()]}
             </p>
         </div>
@@ -103,7 +105,7 @@ deals.addEventListener("click", (e) =>{
     setTimeout(() => {
         wrap_task.remove();
         localStorage.removeItem(wrap_task.id);
-    }, 1500);
+    }, 500);
     
 });
 
@@ -112,12 +114,16 @@ function ChangeColorSelect(el){
     switch(el.value){
         case '1':
             el.className =" has-background-danger has-text-white";
+            importance = background_array[0];
+            
             break;
         case '2':
-            el.className =" has-background-info has-text-white";
+            el.className =" has-background-warning has-text-white";
+            importance = background_array[1];
             break;
         case '3':
-            el.className =" has-background-primary has-text-white";
+            el.className =" has-background-success has-text-white";
+            importance = background_array[2];
             break;
         default:
             break;
